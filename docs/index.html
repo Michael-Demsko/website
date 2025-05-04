@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.41">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>website</title>
+<title></title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,6 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -100,9 +68,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script>
 
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
 
-<link rel="stylesheet" href="styles.css">
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -113,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">website</span>
+    <span class="navbar-title"><img src="./images/logos/logo_test.svg" alt="michael demsko jr logo" id="navbar-logo"></span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -124,15 +150,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
+<span class="menu-text"><span id="navbar-title">michael demsko jr</span></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+    <div class="dropdown">
+      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-list"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./about.html">
+            about
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./ideas/">
+            ideas
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./music/">
+            music
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./writing/">
+            writing
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./data/">
+            data
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./design/">
+            design
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item quarto-navbar-tools-item" href="./photo/">
+            photo
+            </a>
+          </li>
+      </ul>
+    </div>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -147,37 +209,357 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">website</h1>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.0/color-thief.umd.js"></script>
+<div class="photo_container">
+<img id="photo_of_the_day" src="" alt="" style="max-width: 100%; height: 750px; display: block; margin: 0 auto; border: 15px solid black">
+<p id="photo_text">
+<b>photo of the day:</b>
+</p>
 </div>
+<!-- Scroll indicator -->
+<div class="scroll-indicator">
+<p><span class="arrow">⌄</span></p>
+</div>
+<div class="spacer">
+
+</div>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    const sectionCards = document.querySelectorAll(".section-card");
+    const postCards = document.querySelectorAll(".quarto-grid-item.card");
+
+    // Utility function to check if an element is in the viewport
+    const isInViewport = (element) => {
+        const rect = element.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom > 0;
+    };
+
+    const fadeInOnScroll = () => {
+        // New trigger point: hide the scroll indicator after scrolling down 150px
+        const triggerHeight = 150; // Adjust the scroll height threshold as needed
+        if (window.scrollY > triggerHeight) {
+            scrollIndicator.style.opacity = '0'; // Hide the scroll indicator
+            scrollIndicator.style.pointerEvents = 'none'; // Disable interaction
+        } else {
+            scrollIndicator.style.opacity = '1'; // Show the scroll indicator
+            scrollIndicator.style.pointerEvents = 'auto'; // Enable interaction
+        }
+
+        // Fade in section cards
+        sectionCards.forEach((card) => {
+            if (isInViewport(card)) {
+                card.classList.add("visible");
+            }
+        });
+
+        // Fade in post cards with a delay
+        postCards.forEach((post, index) => {
+            if (isInViewport(post)) {
+                setTimeout(() => {
+                    post.classList.add("visible");
+                }, index * 200); // Adjust delay as needed
+            }
+        });
+    };
+
+    // Add the scroll event listener
+    window.addEventListener("scroll", fadeInOnScroll);
+
+    // Trigger the fade-in for elements already in view on page load
+    fadeInOnScroll();
+});
 
 
+</script>
+<!-- JavaScript code to apply the color -->
+<script>
+  function darkenColor(rgbArray, factor) {
+    return rgbArray.map(value => Math.floor(value * factor));
+  }
 
-<div class="quarto-title-meta">
+  function applyColorFromImage() {
+    const img = document.getElementById('photo_of_the_day');
+    const colorThief = new ColorThief();
 
-    
+    // Wait until the image is fully loaded before processing
+    if (img.complete) {
+      // Get a palette of 10 colors from the image
+      let palette = colorThief.getPalette(img, 10);
+
+      // Check if the palette has at least 10 colors
+      if (palette.length >= 10) {
+        // Use the tenth most dominant color (index 9)
+        let chosenColor = palette[9];
+        let darkenedColor = darkenColor(chosenColor, 0.90); // Darken by 10%
+        let colorString = `rgb(${darkenedColor.join(',')})`;
+
+        // Apply the darkened color to the border
+        img.style.borderColor = colorString;
+
+        // Set the --dynamic-color CSS variable for the whole document
+        document.documentElement.style.setProperty('--dynamic-color', colorString);
+      } else {
+        console.warn("Palette has less than 10 colors.");
+      }
+    } else {
+      img.addEventListener('load', function() {
+        let palette = colorThief.getPalette(img, 10);
+
+        if (palette.length >= 10) {
+          let chosenColor = palette[9];
+          let darkenedColor = darkenColor(chosenColor, 0.90); // Darken by 10%
+          let colorString = `rgb(${darkenedColor.join(',')})`;
+
+          img.style.borderColor = colorString;
+          document.documentElement.style.setProperty('--dynamic-color', colorString);
+        } else {
+          console.warn("Palette has less than 10 colors.");
+        }
+      });
+    }
+  }
+
+  applyColorFromImage();
   
-    
-  </div>
-  
+</script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    const photoContainer = document.querySelector(".photo_container");
+    const sectionCardsContainer = document.querySelector(".section-cards-container"); // Add a container around section cards
+    const mainContent = document.querySelector(".main-content"); // Add a container for all content below the photo
+
+    window.addEventListener("scroll", function () {
+        const photoRect = photoContainer.getBoundingClientRect();
+
+        if (photoRect.bottom < 0) {
+            // When photo is out of view, add a class to reposition content
+            sectionCardsContainer.classList.add("sticky");
+            mainContent.classList.add("pushed-up");
+        } else {
+            // When photo is back in view, reset positioning
+            sectionCardsContainer.classList.remove("sticky");
+            mainContent.classList.remove("pushed-up");
+        }
+    });
+});
+
+</script>
+<script>
+
+// Maintain a set of active categories
+const activeCategories = new Set();
+
+function filterSectionCategory(element) {
+  const category = element.getAttribute("data-category");
+  const isActive = element.classList.contains("active");
+
+  // Toggle the active state of the clicked section card
+  if (isActive) {
+    element.classList.remove("active");
+    element.style.borderColor = ""; // Reset border color
+    activeCategories.delete(category); // Remove category from the set
+  } else {
+    element.classList.add("active");
+    const computedColor = window.getComputedStyle(element).color; // Get text color
+    element.style.borderColor = computedColor;
+    activeCategories.add(category); // Add category to the set
+  }
+
+  // Apply filter based on active categories
+  applyMultiCategoryFilter();
+}
+
+// Function to filter posts based on selected categories
+function applyMultiCategoryFilter() {
+  const listingIds = Object.keys(window["quarto-listings"]);
+
+  for (const listingId of listingIds) {
+    const list = window["quarto-listings"][listingId];
+    if (list) {
+      // If no categories are active, reset filter to show all posts
+      if (activeCategories.size === 0) {
+        list.filter();
+      } else {
+        // Filter to include posts matching any of the active categories
+        list.filter(function (item) {
+          const itemValues = item.values();
+          if (itemValues.categories !== null) {
+            const categories = itemValues.categories.split(",");
+            // Check if any of the active categories match the item's categories
+            return Array.from(activeCategories).some(cat => categories.includes(cat));
+          } else {
+            return false;
+          }
+        });
+      }
+    }
+  }
+}
+
+</script>
+  <div class="section-cards-row">
+    <a href="javascript:void(0)" class="section-card ideas" data-category="ideas" onclick="filterSectionCategory(this)">
+      <span>ideas</span>
+    </a>
+    <a href="javascript:void(0)" class="section-card music" data-category="music" onclick="filterSectionCategory(this)">
+      <span>music</span>
+    </a>
+    <a href="javascript:void(0)" class="section-card writing" data-category="writing" onclick="filterSectionCategory(this)">
+      <span>writing</span>
+    </a>
+    <a href="javascript:void(0)" class="section-card data" data-category="data" onclick="filterSectionCategory(this)">
+      <span>data</span>
+    </a>
+    <a href="javascript:void(0)" class="section-card design" data-category="design" onclick="filterSectionCategory(this)">
+      <span>design</span>
+    </a>
+    <a href="javascript:void(0)" class="section-card photo" data-category="photo" onclick="filterSectionCategory(this)">
+      <span>photo</span>
+    </a>
+</div>
 
 
-</header>
 
 
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="writing" data-listing-date-sort="1729828800000" data-listing-file-modified-sort="1732713153777" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="242">
+<a href="./writing/posts/examplepost_writing1.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Write About Life, Or Die!
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('writing'); return false;">
+writing
 </div>
 </div>
-
-
-
-</main> <!-- /main -->
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Oct 25, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="music" data-listing-date-sort="1726113600000" data-listing-file-modified-sort="1732713901705" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="242">
+<a href="./music/posts/music_example_post.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Music is Fun, Music is Cool
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('music'); return false;">
+music
+</div>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Sep 12, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="ideas" data-listing-date-sort="1726027200000" data-listing-file-modified-sort="1732716636724" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="245">
+<a href="./ideas/posts/ideas_test_post.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Exploring Creative Thinking in Product Design
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('ideas'); return false;">
+ideas
+</div>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Sep 11, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="data" data-listing-date-sort="1726027200000" data-listing-file-modified-sort="1732569141768" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="204">
+<a href="./data/posts/examplepost_data1.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Breaking: Data Cures All Disease
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('data'); return false;">
+data
+</div>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Sep 11, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="design" data-listing-date-sort="1726027200000" data-listing-file-modified-sort="1732569427246" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="204">
+<a href="./design/posts/examplepost_design1.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Deisgners Have Symetrical Sex
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('design'); return false;">
+design
+</div>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Sep 11, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="5" data-categories="photo" data-listing-date-sort="1726027200000" data-listing-file-modified-sort="1732569765649" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="204">
+<a href="./photo/posts/examplepost_photo1.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Film Edited in The iPhone Photos App
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('photo'); return false;">
+photo
+</div>
+</div>
+<div class="card-attribution card-text-small end">
+<div class="listing-date">
+Sep 11, 2024
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

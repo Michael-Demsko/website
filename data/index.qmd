@@ -1,0 +1,12 @@
+---
+title: "data"
+listing:
+  contents:
+    - posts
+  type: grid
+  sort: "date desc"
+  fields: [date, title, categories]
+format:
+  html:
+    css: css/styles.css
+---
